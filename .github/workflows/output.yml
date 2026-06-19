@@ -5,7 +5,7 @@ jobs :
     runs-on : ubuntu-latest
     steps :
       - name : Output current date and time
-        run : echo "Current date and time: $(date)"
+        run : echo "Current date and time - "
       
       # - name : Output system information
       #   run : echo "System information: ${{runner.os}}"
