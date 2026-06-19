@@ -5,10 +5,10 @@ jobs :
     runs-on : ubuntu-latest
     steps :
       - name : Output current date and time
-        run : echo "Current date and time: ${{date}}"
+        run : echo "Current date and time: $(date)"
       
       - name : Output system information
         run : echo "System information: ${{runner.os}}"
       
-      - name : Output environment variables
-        run : echo "Environment variables: ${{env}}"
+      - name : Output Github variables
+        run : echo "Github variables: ${{ toJSON(github) }}"
