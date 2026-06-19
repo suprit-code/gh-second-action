@@ -1,0 +1,14 @@
+name : Output Information
+on : workflow_dispatch
+jobs :
+  output :
+    runs-on : ubuntu-latest
+    steps :
+      - name : Output current date and time
+        run : echo "Current date and time: ${{date}}"
+      
+      - name : Output system information
+        run : echo "System information: ${{runner.os}}"
+      
+      - name : Output environment variables
+        run : echo "Environment variables: ${{env}}"
