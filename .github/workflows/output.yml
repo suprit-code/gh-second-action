@@ -7,8 +7,8 @@ jobs :
       - name : Output current date and time
         run : echo "Current date and time: $(date)"
       
-      - name : Output system information
-        run : echo "System information: ${{runner.os}}"
+      # - name : Output system information
+      #   run : echo "System information: ${{runner.os}}"
       
-      - name : Output Github variables
-        run : echo "Github variables: ${{ toJSON(github) }}"
+      # - name : Output Github variables
+      #   run : echo "Github variables: ${{ toJSON(github) }}"
