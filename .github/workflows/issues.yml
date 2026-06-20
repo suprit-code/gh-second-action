@@ -1,0 +1,8 @@
+name : Handle Issues
+on : issues
+jobs :
+  handle-issues :
+    runs-on : ubuntu-latest
+    steps :
+      - name : Output issue information
+        run : echo "Issue title - ${{ github.event.issue.title }}"
