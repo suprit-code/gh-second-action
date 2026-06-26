@@ -45,9 +45,23 @@ jobs :
         uses : actions/upload-artifact@v7
         with :
           name : dist-files
-          path : |
+          path : |                  
             dist
             package.json
 
       - name : Deploy Project
         run : echo "Deploying project..."
+
+  download-artifacts :
+    runs-on : ubuntu-latest
+    needs : deploy
+    steps :
+
+      - name : Download artifacts
+        uses : actions/download-artifact@v8
+        with :
+          name : dist-files
+          path : ./downloaded-artifacts  
+
+      - name : List downloaded artifacts
+        run : ls ./downloaded-artifacts   s
