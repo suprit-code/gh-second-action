@@ -25,6 +25,8 @@ jobs :
   build :
     runs-on : ubuntu-latest
     needs : test
+    outputs :
+      script-file-name : ${{ steps.publish-js-file-name.outputs.script-file }}
     steps :
 
       - name : Get code from repository
@@ -49,6 +51,10 @@ jobs :
             dist
             package.json
 
+      - name : Publish JS file name 
+        id : publish-js-file-name
+        run : find dist/assets/*.js -type f -execdir echo 'script-file : {}' >> $GITHUB_OUTPUT ';'
+
   deploy :
     runs-on : ubuntu-latest
     needs : build
@@ -62,6 +68,9 @@ jobs :
 
       - name : List downloaded artifacts
         run : ls -R ./downloaded-artifacts
+
+      - name : Output script file name
+        run : echo "Script file name - ${{ needs.build.outputs.script-file-name }}"
 
       - name : Deploy Project
         run : echo "Deploying project..."
