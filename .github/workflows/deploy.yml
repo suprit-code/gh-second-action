@@ -22,7 +22,7 @@ jobs :
       - name : Run tests
         run : npm test  
 
-  deploy :
+  build :
     runs-on : ubuntu-latest
     needs : test
     steps :
@@ -49,12 +49,9 @@ jobs :
             dist
             package.json
 
-      - name : Deploy Project
-        run : echo "Deploying project..."
-
-  download-artifacts :
+  deploy :
     runs-on : ubuntu-latest
-    needs : deploy
+    needs : build
     steps :
 
       - name : Download artifacts
@@ -65,3 +62,6 @@ jobs :
 
       - name : List downloaded artifacts
         run : ls -R ./downloaded-artifacts
+
+      - name : Deploy Project
+        run : echo "Deploying project..."
